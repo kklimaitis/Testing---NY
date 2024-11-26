@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kristijonas Klimaitis</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --accent-color: #00ffff; /* Futuristic cyan accent */
+            --bg-color: #121212;
+            --text-color: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation Styles */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: rgba(18, 18, 18, 0.9);
+            padding: 1rem 0;
+            z-index: 1000;
+            text-align: center;
+        }
+
+        .navbar a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 300;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .navbar a:hover {
+            color: var(--accent-color);
+        }
+
+        .navbar a:hover::after {
+            width: 100%;
+        }
+
+        /* Section Styles */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s, transform 0.6s;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-content {
+            max-width: 800px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-weight: 300;
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title .highlight {
+            color: var(--accent-color);
+            position: relative;
+        }
+
+        .section-title .highlight::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.5s ease;
+        }
+
+        .section-title.typed {
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 2s steps(40, end);
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+
+        /* Responsive Adjustments */
+        @media screen and (max-width: 768px) {
+            .navbar a {
+                margin: 0 10px;
+                font-size: 0.9rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .section-content {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#vision">Vision</a>
+        <a href="#mission">Mission</a>
+        <a href="#values">Values</a>
+        <a href="#innovation">Innovation</a>
+        <a href="#impact">Impact</a>
+        <a href="#growth">Growth</a>
+    </nav>
+
+    <section id="vision" class="section">
+        <div class="section-content">
+            <h1 class="section-title">Empowering <span class="highlight">Technological Vision</span></h1>
+            <p>My vision is to drive transformative technological solutions that bridge innovation with meaningful societal impact, leveraging cutting-edge technologies to solve complex global challenges.</p>
+        </div>
+    </section>
+
+    <section id="mission" class="section">
+        <div class="section-content">
+            <h1 class="section-title">Creating <span class="highlight">Sustainable Futures</span></h1>
+            <p>I am dedicated to developing scalable technological solutions that promote sustainability, efficiency, and human potential, with a focus on creating systems that positively transform industries and communities.</p>
+        </div>
+    </section>
+
+    <section id="values" class="section">
+        <div class="section-content">
+            <h1 class="section-title">Core <span class="highlight">Ethical Principles</span></h1>
+            <p>Integrity, continuous learning, and collaborative innovation form the cornerstone of my approach. I believe in transparent, responsible technology that prioritizes human dignity and collective progress.</p>
+        </div>
+    </section>
+
+    <section id="innovation" class="section">
+        <div class="section-content">
+            <h1 class="section-title">Pioneering <span class="highlight">Technological Frontiers</span></h1>
+            <p>By embracing emerging technologies and interdisciplinary approaches, I strive to push the boundaries of what's possible, creating innovative solutions that challenge conventional thinking.</p>
+        </div>
+    </section>
+
+    <section id="impact" class="section">
+        <div class="section-content">
+            <h1 class="section-title">Measurable <span class="highlight">Social Impact</span></h1>
+            <p>My work is driven by a commitment to creating tangible, positive changes in society, focusing on solutions that address critical global challenges and improve human experiences.</p>
+        </div>
+    </section>
+
+    <section id="growth" class="section">
+        <div class="section-content">
+            <h1 class="section-title">Continuous <span class="highlight">Personal Evolution</span></h1>
+            <p>I view personal and professional growth as a lifelong journey, constantly seeking new knowledge, challenging my perspectives, and adapting to the rapidly changing technological landscape.</p>
+        </div>
+    </section>
+
+    <script>
+        // Intersection Observer for section animations
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
